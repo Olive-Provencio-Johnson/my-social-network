@@ -1,35 +1,38 @@
-const { Thought, Thought } = require("../models");
+const { Thought, User } = require("../models");
 
 const thoughtsController = {
-
+    // get all available thoughts
   getThoughts(req, res) {
     Thought.find()
-      .then((dbUser) => {
-        res.json(dbUser);
+      .then((dbThought) => {
+        res.json(dbThought);
       })
       .catch((err) => {
         console.log(err);
       });
   },
+
+  // create a thought
   createThoughts(req, res) {
     Thought.create()
-    .then((dbUser) => {
-        res.json(dbUser);
-    })
-    .catch((err) => {
+      .then((dbThought) => {
+        res.json(dbThought);
+      })
+      .catch((err) => {
         console.log(err);
-    });
-  },
-  getSingleThought(req, res) {
-    Thought.findOne()
-    .then((dbUser) => {
-        res.json(dbUser);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+      });
   },
 
+  // get one single thought 
+  getSingleThought(req, res) {
+    Thought.findOne()
+      .then((dbThought) => {
+        res.json(dbThought);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 
 module.exports = thoughtsController;

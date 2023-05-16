@@ -3,8 +3,8 @@ const router = require('express').Router();
 const {
     getThoughts,
     createThoughts,
-    getSingleThought,
+    getSingleThought
 
 } = require('../../controllers/userController')
 
-router.route('/').get(getUsers).post(createUser)
+router.route('/').get(getThoughts).post(createThoughts)

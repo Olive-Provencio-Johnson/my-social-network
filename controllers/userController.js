@@ -2,6 +2,7 @@ const { User, Thought } = require("../models");
 
 const userController = {
 
+    // get all available users
   getUsers(req, res) {
     User.find()
       .then((dbUser) => {
@@ -11,6 +12,8 @@ const userController = {
         console.log(err);
       });
   },
+
+  //create a single user
   createUser(req, res) {
     User.create()
     .then((dbUser) => {
@@ -20,6 +23,8 @@ const userController = {
         console.log(err);
     });
   },
+
+// get a single user
   getSingleUser(req, res) {
     User.findOne()
     .then((dbUser) => {
