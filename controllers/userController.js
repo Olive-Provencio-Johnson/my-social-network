@@ -1,40 +1,40 @@
-const { User, Thought } = require("../models");
+const { User } = require("../models");
 
 const userController = {
-
-    // get all available users
-  getUsers(req, res) {
-    User.find()
-      .then((dbUser) => {
+  // get all available users
+  async getUsers(req, res) {
+    try {
+        const dbUser = await User.find();
         res.json(dbUser);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    } catch(err) {
+        res.status(500).json(err);
+    }
   },
 
   //create a single user
-  createUser(req, res) {
-    User.create()
-    .then((dbUser) => {
-        res.json(dbUser);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+  async createUser(req, res) {
+    try {
+      const dbUser = await User.create(req.body);
+      res.json(dbUser);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   },
 
-// get a single user
-  getSingleUser(req, res) {
-    User.findOne()
-    .then((dbUser) => {
-        res.json(dbUser);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-  },
+  // get a single user
+  async getSingleUser(req, res) {
+    try {
+      const dbUser = await User.findOne({ _id: req.params.userId });
 
+      if (!dbUser) {
+        return res.status(404).json({ message: "No user found with that ID" });
+      }
+
+      res.json(dbUser);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
 };
 
 module.exports = userController;
