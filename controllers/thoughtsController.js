@@ -38,13 +38,44 @@ const thoughtsController = {
 
   async deleteSingleThought(req, res) {
     try {
-      const dbThought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
+      const dbThought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
 
-      if (!thoughtId) {
+      if (!dbthought) {
         return res.status(404).json({ message: 'No thought was found with this id!' })
       }
 
       res.json({ message: 'Your thought was successfully deleted!' });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }, 
+  // update a single thought 
+  async updateThought(req, res) {
+    try {
+      const dbThought = await Thought.findOneAndUpdate ({ _id: req.params.thoughtId });
+
+      if (!dbThought) {
+        return res.status(404).json({ message: 'No thought was found with this id!' })
+      }
+
+      res.json({ message: 'Your update to this thought was successfully updated!' });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  // add or update a reaction to a single thought 
+  async updateReaction(req, res) {
+    try {
+      const dbThought = await Thought.findOne({ _id: req.params.thoughtId });
+
+      if (!dbThought) {
+        return res.status(404).json({ message: 'No thought was found with this id!' })
+      }
+
+      dbThought.reaction.push(req.body);
+      const updatedThought = await dbThought.save();
+
+      res.json({ message: 'Your reaction to this thought was successfully added or updated!', updatedThought });
     } catch (err) {
       res.status(500).json(err);
     }
