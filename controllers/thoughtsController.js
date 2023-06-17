@@ -40,7 +40,7 @@ const thoughtsController = {
     try {
       const dbThought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
 
-      if (!dbthought) {
+      if (!thoughtId) {
         return res.status(404).json({ message: 'No thought was found with this id!' })
       }
 
