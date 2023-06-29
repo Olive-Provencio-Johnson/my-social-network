@@ -5,7 +5,7 @@ This is an API for a social network web application where users can share their 
 
 ## Table of Contents
 - [Screenshots](#screenshots)
-- [Walk-Through-Video] (#walk-through-video)
+- [Walk-Through-Video](#walk-through-video)
 - [Credits](#credits)
 - [License](#license)
 
