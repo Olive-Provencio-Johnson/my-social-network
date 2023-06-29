@@ -14,7 +14,7 @@ This is an API for a social network web application where users can share their 
 ![screenshot2](./assets/screenshot2.jpeg)
 
 ## Walk-Through-Video
-[video](https://app.screencastify.com/manage/videos/bX2068j7YnlpDC7Id6b6)
+[video](https://drive.google.com/file/d/1X4I2PiyGtPLbhbtzOHjbIwrlUf9Fw27n/view)
 
 ## Credits
 Code written by Olive Provencio-Johnson. Special thanks to the awesome Anthony Parrino for all his help and support throughout the process.
